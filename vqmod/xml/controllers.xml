@@ -174,6 +174,33 @@
             'regular_license_price'	  => $regular_license_price,
             ]]></add>
         </operation>
+		
+		<operation  error="abort">
+			<search position="before"><![CDATA[public function index() {]]></search>
+			<add><![CDATA[
+				protected function getTotalBought($product_id, $order_status_id = 0){
+					$filter_status = " AND o.order_status_id > 0";
+					if($order_status_id) {
+						$filter_status = " AND o.order_status_id IN (".implode(",",$order_status_id).")";
+					}
+					
+					$query = $this->db->query("SELECT sum(quantity) as `total` FROM `" . DB_PREFIX . "order_product` op
+						LEFT JOIN `".DB_PREFIX."order` AS o ON op.order_id = o.order_id WHERE op.product_id = ".$product_id.$filter_status);
+
+					if($query->num_rows){
+						return $query->row['total'];
+					}
+					return 0;
+				}
+			]]></add>
+		</operation>
+		
+		<operation  error="abort">
+			<search position="after"><![CDATA[if ($product_info) {]]></search>
+			<add><![CDATA[
+				$data['sold_items'] = $this->getTotalBought($product_info['product_id']);
+			]]></add>
+		</operation>
 	</file>
 	
 	<file name="catalog/controller/product/category.php">

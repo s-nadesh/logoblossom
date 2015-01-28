@@ -254,6 +254,13 @@
           <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
           <!-- AddThis Button END --> 
         <?php } ?>
+        <div>
+        <?php if(isset($sold_items)) { ?>
+        <div class="ec_block_sold_items">
+            <div><?php echo $sold_items; ?> Sales</div>
+        </div>
+        <?php } ?>
+        </div>
       </div>
       </div>
       
