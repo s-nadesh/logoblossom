@@ -261,5 +261,31 @@
             ]]></add>
         </operation>
 	</file>
+	
+	<file name="catalog/controller/checkout/success.php">
+        <operation>
+            <search position="before"><![CDATA[
+            $this->cart->clear();
+            ]]></search>
+            <add><![CDATA[
+			$order_id = $this->session->data['order_id'];
+			
+			$this->load->model('checkout/order');
+			$this->load->model('catalog/product');
+			
+			$order_products = $this->model_checkout_order->getOrderProducts($order_id);
+			
+			foreach($order_products as $order_product){
+				$order_product_options = $this->model_checkout_order->getOrderProductOptions($order_product['order_id'], $order_product['order_product_id']);
+				
+				foreach($order_product_options as $order_product_option){
+					if($order_product_option['name'] == 'License' && $order_product_option['value'] == 'Extended License'){
+						$this->model_catalog_product->changeProductStatus($order_product['product_id']);
+					}
+				}
+			}
+            ]]></add>
+        </operation>
+	</file>
 	 
 </modification>

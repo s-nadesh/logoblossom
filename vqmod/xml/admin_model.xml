@@ -5,4 +5,19 @@
 	<vqmver>2.5.0</vqmver>
 	<author>Logoblossom</author>
 	
+	<file name="admin/model/catalog/product.php">
+	
+		<operation  error="abort">
+			<search position="before"><![CDATA[
+			$sql .= " GROUP BY p.product_id";
+			]]></search>
+			<add><![CDATA[
+				else {
+					$sql .= " AND p.status != -1";
+				}
+				]]></add>
+		</operation>
+		
+	</file>
+	
 </modification>

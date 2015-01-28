@@ -29,4 +29,36 @@
 		</operation>
 	</file>
 	
+	<file name="catalog/model/checkout/order.php">
+	
+		<operation  error="abort">
+			<search position="before"><![CDATA[public function getOrder($order_id) {]]></search>
+			<add><![CDATA[
+				public function getOrderProducts($order_id){
+					$order_product_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE order_id = '" . (int)$order_id . "'");
+					return $order_product_query->rows;
+				}
+				
+				public function getOrderProductOptions($order_id, $order_product_id){
+					$order_option_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_option WHERE order_id = '" . (int)$order_id . "' AND order_product_id = '" . (int)$order_product_id . "'");
+					return $order_option_query->rows;
+				}
+				]]></add>
+		</operation>
+		
+	</file>
+	
+	<file name="catalog/model/catalog/product.php">
+	
+		<operation  error="abort">
+			<search position="before"><![CDATA[public function getTotalProductSpecials() {]]></search>
+			<add><![CDATA[
+				public function changeProductStatus($product_id){
+					$this->db->query("UPDATE " . DB_PREFIX . "product SET status = -1 WHERE product_id = '" . (int)$product_id . "'");
+				}
+				]]></add>
+		</operation>
+		
+	</file>
+	
 </modification>
