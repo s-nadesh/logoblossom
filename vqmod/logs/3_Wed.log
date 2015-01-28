@@ -1,0 +1,12 @@
+---------- Date: 2015-01-21 06:50:23 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /logo_blossom/admin/index.php?route=catalog/product/add&token=178dd7072cd6779ffd51769f871c9904
+VQMod::_parseMods - INVALID XML FILE: : Start tag expected, '&lt;' not found in file:///D:/wamp/www/logo_blossom/vqmod/xml/admin_model.xml, line: 1
+----------------------------------------------------------------------
+
+
+---------- Date: 2015-01-21 07:05:35 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /logo_blossom/admin/index.php?route=catalog/product/add&token=178dd7072cd6779ffd51769f871c9904
+VQMod::_parseMods - INVALID XML FILE: : Start tag expected, '&lt;' not found in file:///D:/wamp/www/logo_blossom/vqmod/xml/admin_model.xml, line: 1
+----------------------------------------------------------------------
+
+

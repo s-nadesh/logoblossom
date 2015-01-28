@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<id>Admin Controllers</id>
+	<version>1.0</version>
+	<vqmver>2.5.0</vqmver>
+	<author>Logoblossom</author>
+	
+	<file name="admin/controller/common/footer.php">
+		<operation>
+            <search position="replace"><![CDATA[
+            $data['text_footer'] = $this->language->get('text_footer');
+            ]]></search>
+            <add><![CDATA[
+            $data['text_footer'] = sprintf($this->language->get('text_footer'), $this->config->get('config_name'), date('Y', time()));
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="admin/controller/catalog/product.php">
+        <operation>
+            <search position="replace"><![CDATA[
+            $data['subtract'] = 1;
+            ]]></search>
+            <add><![CDATA[
+           $data['subtract'] = 0;
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="replace"><![CDATA[
+            $data['shipping'] = 1;
+            ]]></search>
+            <add><![CDATA[
+           $data['shipping'] = 0;
+            ]]></add>
+        </operation>
+	</file>
+	
+</modification>

@@ -1,0 +1,15 @@
+---------- Date: 2015-01-24 10:54:47 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /logo_blossom/index.php?route=account/account
+MOD DETAILS:
+   modFile   : D:\wamp\www\logo_blossom\vqmod/xml/library.xml
+   id        : Model
+   version   : 1.0
+   vqmver    : 2.5.0
+   author    : Logoblossom
+
+File Name    : system/library/cart.php(0)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): public function getCategories($parent_id = 0) {
+
+----------------------------------------------------------------------
+
+

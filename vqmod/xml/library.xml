@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<modification>
+	<id>Library</id>
+	<version>1.0</version>
+	<vqmver>2.5.0</vqmver>
+	<author>Logoblossom</author>
+	
+	<file name="system/library/cart.php">
+	
+		<operation>
+			<search position="replace"><![CDATA[$this->session->data['cart'][$key] += (int)$qty;]]></search>
+			<add><![CDATA[
+				$this->session->data['cart'][$key] = (int)$qty;
+				]]></add>
+		</operation>
+
+	</file>
+	
+</modification>

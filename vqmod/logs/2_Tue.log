@@ -1,0 +1,25 @@
+---------- Date: 2015-01-27 14:24:07 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /logo_blossom/admin/index.php?route=user/user&token=d71ed26731a943f38d16573e4e559edf
+MOD DETAILS:
+   modFile   : D:\wamp\www\logo_blossom\vqmod/xml/admin_languages.xml
+   id        : Admin Languages
+   version   : 1.0
+   vqmver    : 2.5.0
+   author    : Logoblossom
+VQModObject::parseMods - Could not resolve path for [admin/language/common/footer.php] (SKIPPED)
+----------------------------------------------------------------------
+
+
+---------- Date: 2015-01-27 14:26:45 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /logo_blossom/admin/index.php?route=catalog/product&token=d71ed26731a943f38d16573e4e559edf
+MOD DETAILS:
+   modFile   : D:\wamp\www\logo_blossom\vqmod/xml/admin_controllers.xml
+   id        : Admin Controllers
+   version   : 1.0
+   vqmver    : 2.5.0
+   author    : Logoblossom
+VQModObject::parseMods - Could not resolve path for [admin/controller/common/product.php] (SKIPPED)
+
+----------------------------------------------------------------------
+
+

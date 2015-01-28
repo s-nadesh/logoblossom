@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+	<id>Controllers</id>
+	<version>1.0</version>
+	<vqmver>2.5.0</vqmver>
+	<author>Logoblossom</author>
+	
+	<file name="catalog/controller/common/header.php">
+        <operation>
+            <search position="after"><![CDATA[
+            $data['telephone'] = $this->config->get('config_telephone');
+            ]]></search>
+            <add><![CDATA[
+            $data['email'] = $this->config->get('config_email');
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="after"><![CDATA[
+            $data['cart'] = $this->load->controller('common/cart');
+            ]]></search>
+            <add><![CDATA[
+            //Is Home page
+			$data['is_home'] = false;
+			if(!isset($this->request->get['route']) || $this->request->get['route'] == 'common/home') {
+				$data['is_home'] = true;
+			}
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="after"><![CDATA[
+            $data['contact'] = $this->url->link('information/contact');
+            ]]></search>
+            <add><![CDATA[
+            $data['about'] = $this->url->link('information/information&information_id=4');
+			$data['faq'] = $this->url->link('information/information&information_id=8');
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="before"><![CDATA[
+            $data['categories'] = array();
+            ]]></search>
+            <add><![CDATA[
+            $data['first_category'] = $this->model_catalog_category->getFirstCategory();
+			$data['first_category_link'] = $this->url->link('product/category&path='.$data['first_category']['category_id']);
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/common/footer.php">
+		<operation>
+            <search position="after"><![CDATA[
+            $this->load->language('common/footer');
+            ]]></search>
+            <add><![CDATA[
+            if ($this->request->server['HTTPS']) {
+				$server = $this->config->get('config_ssl');
+			} else {
+				$server = $this->config->get('config_url');
+			}
+            ]]></add>
+        </operation>
+		
+        <operation>
+            <search position="replace"><![CDATA[
+            $data['powered'] = sprintf($this->language->get('text_powered'), $this->config->get('config_name'), date('Y', time()));
+            ]]></search>
+            <add><![CDATA[
+            $data['powered'] = sprintf($this->language->get('text_powered'), date('Y', time()), $server, $this->config->get('config_name'));
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="before"><![CDATA[
+            $this->load->model('catalog/information');
+            ]]></search>
+            <add><![CDATA[
+            $this->load->model('catalog/category');
+			
+			$data['limited_categories'] = array();
+			foreach ($this->model_catalog_category->getLimitedCategories(5) as $result) {
+				$data['limited_categories'][] = array(
+					'name' => $result['name'],
+					'href'  => $this->url->link('product/category', 'path=' . $result['category_id'])
+				);
+			}
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/common/home.php">
+        <operation>
+            <search position="after"><![CDATA[
+            $data['header'] = $this->load->controller('common/header');
+            ]]></search>
+            <add><![CDATA[
+            $data['search'] = $this->load->controller('common/search');
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/module/category.php">
+        <operation>
+            <search position="replace"><![CDATA[
+            'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+            ]]></search>
+            <add><![CDATA[
+            'name'        => $category['name'] . ($this->config->get('config_product_count') ? '<span>' . $this->model_catalog_product->getTotalProducts($filter_data) . '</span>' : ''),
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/module/latest.php">
+        <operation>
+            <search position="before"><![CDATA[
+            $data['products'][] = array(
+            ]]></search>
+            <add><![CDATA[
+			$regular_license_price = false;
+			
+			foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
+				if(!empty($option)){
+					if($option['name'] == 'License'){
+						foreach($option['product_option_value'] as $option_value){
+							if($option_value['name'] == 'Regular License'){
+								$regular_license_price = $this->currency->format($option_value['price']);
+						 	}
+						}
+					}
+				}
+			}
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="after"><![CDATA[
+            'rating'      => $rating,
+            ]]></search>
+            <add><![CDATA[
+            'regular_license_price'	  => $regular_license_price,
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/product/product.php">
+        <operation>
+            <search position="before"><![CDATA[
+            $data['products'][] = array(
+            ]]></search>
+            <add><![CDATA[
+			$regular_license_price = false;
+			
+			foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
+				if(!empty($option)){
+					if($option['name'] == 'License'){
+						foreach($option['product_option_value'] as $option_value){
+							if($option_value['name'] == 'Regular License'){
+								$regular_license_price = $this->currency->format($option_value['price']);
+						 	}
+						}
+					}
+				}
+			}
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="after"><![CDATA[
+            'rating'      => $rating,
+            ]]></search>
+            <add><![CDATA[
+            'regular_license_price'	  => $regular_license_price,
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/product/category.php">
+        <operation>
+            <search position="before"><![CDATA[
+            $data['products'][] = array(
+            ]]></search>
+            <add><![CDATA[
+			$regular_license_price = false;
+			
+			foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
+				if(!empty($option)){
+					if($option['name'] == 'License'){
+						foreach($option['product_option_value'] as $option_value){
+							if($option_value['name'] == 'Regular License'){
+								$regular_license_price = $this->currency->format($option_value['price']);
+						 	}
+						}
+					}
+				}
+			}
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="after"><![CDATA[
+            'rating'      => $result['rating'],
+            ]]></search>
+            <add><![CDATA[
+            'regular_license_price'	  => $regular_license_price,
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/product/search.php">
+        <operation>
+            <search position="before"><![CDATA[
+            $data['products'][] = array(
+            ]]></search>
+            <add><![CDATA[
+			$regular_license_price = false;
+			
+			foreach ($this->model_catalog_product->getProductOptions($result['product_id']) as $option) {
+				if(!empty($option)){
+					if($option['name'] == 'License'){
+						foreach($option['product_option_value'] as $option_value){
+							if($option_value['name'] == 'Regular License'){
+								$regular_license_price = $this->currency->format($option_value['price']);
+						 	}
+						}
+					}
+				}
+			}
+            ]]></add>
+        </operation>
+		
+		<operation>
+            <search position="after"><![CDATA[
+            'rating'      => $result['rating'],
+            ]]></search>
+            <add><![CDATA[
+            'regular_license_price'	  => $regular_license_price,
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/checkout/cart.php">
+        <operation>
+            <search position="after"><![CDATA[
+            $data['header'] = $this->load->controller('common/header');
+            ]]></search>
+            <add><![CDATA[
+			$data['cart_count'] = $this->cart->countProducts();
+            ]]></add>
+        </operation>
+	</file>
+	
+	<file name="catalog/controller/payment/pp_standard.php">
+        <operation>
+            <search position="replace"><![CDATA[
+            $value = $option['option_value'];
+            ]]></search>
+            <add><![CDATA[
+			$value = $option['value'];
+            ]]></add>
+        </operation>
+	</file>
+	 
+</modification>

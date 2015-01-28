@@ -1,0 +1,14 @@
+---------- Date: 2015-01-22 13:43:34 ~ IP : 127.0.0.1 ----------
+REQUEST URI : /logo_blossom/index.php?route=product/category&path=59
+MOD DETAILS:
+   modFile   : D:\wamp\www\logo_blossom\vqmod/xml/controllers.xml
+   id        : Controllers
+   version   : 1.0
+   vqmver    : 2.5.0
+   author    : Logoblossom
+
+File Name    : catalog/controller/product/category.php(1)
+VQModObject::applyMod - SEARCH NOT FOUND (ABORTING MOD): 'rating'      => $rating,
+----------------------------------------------------------------------
+
+
