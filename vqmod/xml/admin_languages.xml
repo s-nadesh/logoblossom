@@ -16,4 +16,16 @@
         </operation>
 	</file>
 	
+	<file name="admin/language/english/catalog/product.php">
+        <operation>
+            <search position="after"><![CDATA[
+            $_['heading_title']          = 'Products';
+            ]]></search>
+            <add><![CDATA[
+            $_['sold_product_heading']   = 'Sold Products';
+			$_['sold_product_text_list'] = 'Sold Product List';
+            ]]></add>
+        </operation>
+	</file>
+	
 </modification>
