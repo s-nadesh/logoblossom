@@ -1392,4 +1392,14 @@ div.required label:before {
     border-color: #65b7d2;
 }
 
+.sold_items {
+  background-color: #e75a3a;
+  color: #fff;
+  display: block;
+  padding: 5px;
+  width: 100%;
+}
+.btn{
+	border-radius: 0px;
+}
 /* END - New Class added */

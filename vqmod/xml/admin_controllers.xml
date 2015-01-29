@@ -274,6 +274,7 @@
 				$data['tab_option'] = $this->language->get('tab_option');
 				$data['tab_image'] = $this->language->get('tab_image');
 				$data['tab_links'] = $this->language->get('tab_links');
+				$data['tab_history'] = $this->language->get('tab_history');
 		
 				$data['button_back'] = $this->language->get('button_back');
 		
@@ -525,6 +526,22 @@
 						$data['product_relateds'][] = array(
 							'product_id' => $related_info['product_id'],
 							'name'       => $related_info['name']
+						);
+					}
+				}
+				
+				//Purchased History
+				if (isset($this->request->get['product_id'])) {
+					$data['history'] = array();
+					$this->load->model('sale/order');
+					$order_products = $this->model_sale_order->getOrderProductsByProductId($this->request->get['product_id']);
+					foreach($order_products as $order_product){
+						$order = $this->model_sale_order->getOrder($order_product['order_id']);
+						$order_options = $this->model_sale_order->getOrderOptions($order_product['order_id'], $order_product['order_product_id']);
+						$data['history'][] = array(
+							'customer' => $order['customer'],
+							'order_date' => $order['date_added'],
+							'order_option' => $order_options[0]['value']
 						);
 					}
 				}

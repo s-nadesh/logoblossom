@@ -20,4 +20,21 @@
 		
 	</file>
 	
+	<file name="admin/model/sale/order.php">
+	
+		<operation  error="abort">
+			<search position="before"><![CDATA[
+			public function getOrderProducts($order_id) {
+			]]></search>
+			<add><![CDATA[
+				public function getOrderProductsByProductId($product_id){
+					$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "order_product WHERE product_id = '" . (int)$product_id . "'");
+
+					return $query->rows;
+				}
+				]]></add>
+		</operation>
+		
+	</file>
+	
 </modification>

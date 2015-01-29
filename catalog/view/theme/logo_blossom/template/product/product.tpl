@@ -74,6 +74,13 @@
           <li><?php echo $text_reward; ?> <?php echo $reward; ?></li>
           <?php } ?>
           <li><?php echo $text_stock; ?> <?php echo $stock; ?></li>
+          <?php if(isset($sold_items)) { ?>
+          <li>
+            <div class="sold_items">
+                <div><i class="fa fa-shopping-cart"></i> <?php echo $sold_items; ?> Sales</div>
+            </div>
+          </li>
+          <?php } ?>
         </ul>
         <?php } ?>
         <div id="product">
@@ -254,13 +261,7 @@
           <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
           <!-- AddThis Button END --> 
         <?php } ?>
-        <div>
-        <?php if(isset($sold_items)) { ?>
-        <div class="ec_block_sold_items">
-            <div><?php echo $sold_items; ?> Sales</div>
-        </div>
-        <?php } ?>
-        </div>
+        
       </div>
       </div>
       

@@ -22,8 +22,8 @@
             $_['heading_title']          = 'Products';
             ]]></search>
             <add><![CDATA[
-            $_['sold_product_heading']   = 'Sold Products';
-			$_['sold_product_text_list'] = 'Sold Product List';
+            $_['sold_product_heading']   = 'Sold Extended Logos';
+			$_['sold_product_text_list'] = 'Sold Extended Logos List';
             ]]></add>
         </operation>
 	</file>

@@ -19,9 +19,6 @@
     <div class="panel-heading">
       <h3 class="panel-title"><i class="fa fa-list"></i> <?php echo $sold_product_heading; ?></h3>
     </div>
-   <?php $html = "<div>Some text</div>";
-
-echo $html; ?>
     <div class="panel-body">
       <ul class="nav nav-tabs">
         <li class="active"><a href="#tab-general" data-toggle="tab"><?php echo $tab_general; ?></a></li>
@@ -29,6 +26,7 @@ echo $html; ?>
         <li><a href="#tab-links" data-toggle="tab"><?php echo $tab_links; ?></a></li>
         <li><a href="#tab-image" data-toggle="tab"><?php echo $tab_image; ?></a></li>
         <li><a href="#tab-option" data-toggle="tab"><?php echo $tab_option; ?></a></li>
+        <li><a href="#tab-history" data-toggle="tab"><?php echo $tab_history; ?></a></li>
       </ul>
       <div class="tab-content">
         <div class="tab-pane active" id="tab-general">
@@ -105,8 +103,8 @@ echo $html; ?>
             <?php } ?>
           </table>
         </div>
+        
         <div class="tab-pane" id="tab-option">
-          <table class="table table-bordered" width="100%">
             <?php foreach ($product_options as $product_option) { ?>
             <?php if ($product_option['type'] == 'select' || $product_option['type'] == 'radio' || $product_option['type'] == 'checkbox' || $product_option['type'] == 'image') { ?>
             <div class="table-responsive">
@@ -133,17 +131,35 @@ echo $html; ?>
                 </tbody>
               </table>
             </div>
-            <select id="option-values<?php echo $option_row; ?>" style="display: none;">
-              <?php if (isset($option_values[$product_option['option_id']])) { ?>
-              <?php foreach ($option_values[$product_option['option_id']] as $option_value) { ?>
-              <option value="<?php echo $option_value['option_value_id']; ?>"><?php echo $option_value['name']; ?></option>
-              <?php } ?>
-              <?php } ?>
-            </select>
             <?php } ?>
             <?php } ?>
+        </div>
+        
+        <div class="tab-pane" id="tab-history">
+          <table class="table table-bordered">
+          <thead>
+            <tr>
+              <td>Customer Name</td>
+              <td>Date</td>
+              <td>License</td>
+            </tr>
+          </thead>
+          <tbody>  
+            <?php foreach ($history as $history_product) { ?>
+            <tr>
+              <td><?php echo $history_product['customer'] ?></td>
+              <td><?php echo $history_product['order_date'] ?></td>
+              <td><?php echo $history_product['order_option'] ?></td>
+            </tr>
+            <?php } ?>
+            </tbody>
           </table>
         </div>
+        
+        
+        
+        
+        
       </div>
     </div>
   </div>
