@@ -1406,4 +1406,11 @@ div.required label:before {
 #cart-total{
 	color:#000000;
 }
+
+.text-nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+}
 /* END - New Class added */

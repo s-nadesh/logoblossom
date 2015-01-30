@@ -148,10 +148,11 @@ display:none!important
 	margin-bottom:25px;
 }
 
-.buynow,  .product-name, .logo-thumb-details span
+.buynow,  .product-name, .logo-thumb-details span, .logo-thumb-details div
 {
 	text-align: center;
 }
+
 
 
 }
@@ -241,7 +242,7 @@ display:none!important
 }
 
 
-.buynow,  .product-name, .logo-thumb-details span
+.buynow,  .product-name, .logo-thumb-details span, .logo-thumb-details div
 {
 	text-align: center;
 }

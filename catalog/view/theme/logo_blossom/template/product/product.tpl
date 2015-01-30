@@ -364,13 +364,13 @@
             <div class="latest-logo-img image"><a href="<?php echo $product['href']; ?>"><img src="<?php echo $product['thumb']; ?>" alt="<?php echo $product['name']; ?>" title="<?php echo $product['name']; ?>" class="img-responsive" /></a></div>
             <div class="row">
               <div class="col-xs-12 col-sm-12 col-md-9">
-                <a href="<?php echo $product['href']; ?>"><?php echo $product['name']; ?></a> 
+                <a href="<?php echo $product['href']; ?>">
+                  <div class="text-nowrap"><?php echo $product['name']; ?></div>
+                </a> 
                 <span><?php echo ($product['regular_license_price'] ? $product['regular_license_price'] : '---' ); ?></span>
               </div>
-              <div class="col-xs-12 col-sm-9 col-md-3 buynow">
-                <div class="button-group">
-                  <button type="button" onclick="cart.add('<?php echo $product['product_id']; ?>');"><i class="fa fa-shopping-cart"></i></button>
-                </div>
+              <div class="col-xs-12 col-sm-12 col-md-3 buynow">
+              	<a href="<?php echo $product['href']; ?>"> Buy </a>
               </div>
             </div>
           </div>
