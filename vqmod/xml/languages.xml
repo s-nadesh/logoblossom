@@ -75,6 +75,15 @@
             $_['text_account_already'] = '<p>Already have an account for this site ? <br> Then you already have an Logoblossom account and can sign in with your existing username and password.</p><p><a href="%s" class="signin-btn">Sign In</a>.</p>';
             ]]></add>
         </operation>
+		
+		<operation>
+            <search position="after"><![CDATA[
+            $_['error_telephone']      = 'Telephone must be between 3 and 32 characters!';
+            ]]></search>
+            <add><![CDATA[
+            $_['error_telephone_number']      = 'Telephone must be numbers!';
+            ]]></add>
+        </operation>
 	</file>
 	
 	<file name="catalog/language/english/product/product.php">

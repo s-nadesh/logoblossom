@@ -314,5 +314,18 @@
             ]]></add>
         </operation>
 	</file>
+	
+	<file name="catalog/controller/account/register.php">
+        <operation>
+            <search position="before"><![CDATA[
+            if ((utf8_strlen(trim($this->request->post['address_1'])) < 3) || (utf8_strlen(trim($this->request->post['address_1'])) > 128)) {
+            ]]></search>
+            <add><![CDATA[
+			 else if(!preg_match('/^\+?\d+$/', $this->request->post['telephone'])){
+				$this->error['telephone'] = $this->language->get('error_telephone_number');
+			}
+            ]]></add>
+        </operation>
+	</file>
 	 
 </modification>
