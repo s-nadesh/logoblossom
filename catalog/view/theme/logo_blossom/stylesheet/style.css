@@ -1395,11 +1395,15 @@ div.required label:before {
 .sold_items {
   background-color: #e75a3a;
   color: #fff;
-  display: block;
-  padding: 5px;
-  width: 100%;
+  padding: 0 5px;
+  float:left;
+  font-size:13px;
 }
 .btn{
 	border-radius: 0px;
+}
+
+#cart-total{
+	color:#000000;
 }
 /* END - New Class added */

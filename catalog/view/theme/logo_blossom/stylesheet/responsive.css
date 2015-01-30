@@ -1,3 +1,12 @@
+@media (max-width:320px) {
+.cart
+{
+	position:absolute;
+	margin-top:45px;
+	font-size:15px !important;
+}
+}
+
 @media (max-width:767px) {
 .hidden-xs {
 display:none!important
@@ -39,8 +48,8 @@ display:none!important
 }
 .logo
 {
-
 	margin-top:0px;
+	z-index:9;
 }
 
 .top-links
@@ -321,3 +330,5 @@ th.visible-print, td.visible-print {
 	display:none!important
 }
 }
+
+

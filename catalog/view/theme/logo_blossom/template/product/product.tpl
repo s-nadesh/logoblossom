@@ -77,8 +77,9 @@
           <?php if(isset($sold_items)) { ?>
           <li>
             <div class="sold_items">
-                <div><i class="fa fa-shopping-cart"></i> <?php echo $sold_items; ?> Sales</div>
+                <i class="fa fa-shopping-cart"></i> <?php echo $sold_items; ?> Sales
             </div>
+            <div class="clearfix"></div>
           </li>
           <?php } ?>
         </ul>
